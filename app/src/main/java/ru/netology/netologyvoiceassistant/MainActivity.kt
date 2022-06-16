@@ -3,23 +3,39 @@ package ru.netology.netologyvoiceassistant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
+    val TAG: String = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
-        val TAG: String = "MainActivity"
-        Log.d(TAG, "start of onCreate function")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val name: String = "Ivan"
-        val surname: String = "Ivanov"
-        val age: Int = 37
-        val height: Double = 172.2
-        val output: TextView = findViewById(R.id.output)
-        Log.d (TAG, "Writing log for "+name)
+        initViews()
+    }
 
-        output.text = "name: " + name + " surname: " + surname + " age: " + age + " height: " + height
-        Log.d(TAG, "end of onCreate function")
+    fun initViews() {
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_stop -> {
+                Log.d(TAG, "Stop pressed")
+            }
+            R.id.action_clear -> {
+                Log.d(TAG, "Clear pressed")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

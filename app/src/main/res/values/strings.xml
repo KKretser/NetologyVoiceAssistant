@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">NetologyVoiceAssistant</string>
+    <string name="app_name">NetVoice</string>
+    <string name="action_stop_title">Stop</string>
+    <string name="action_clear_title">Clear</string>
 </resources>
